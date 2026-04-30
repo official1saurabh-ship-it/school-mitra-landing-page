@@ -14,13 +14,13 @@ const FeaturesHero = () => {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight mb-6 text-white leading-tight">
-            All-in-One Restaurant <br />
-            <span className="bg-gradient-to-r from-saas-accent to-purple-400 bg-clip-text text-transparent">
+            All-in-One School <br />
+            <span className="bg-gradient-to-r from-saas-accent to-blue-400 bg-clip-text text-transparent">
               Management Platform
             </span>
           </h1>
           <p className="text-gray-400 text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-            Everything you need to run and grow your restaurant. From POS billing to HR management, we've got you covered with a modern, high-performance toolkit.
+            Everything you need to manage and grow your school. From student records to staff management, we've got you covered with a modern, high-performance toolkit.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-saas-accent hover:brightness-110 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-xl shadow-saas-accent/20 transition-all active:scale-95">

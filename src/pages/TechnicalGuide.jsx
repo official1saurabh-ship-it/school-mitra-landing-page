@@ -1,66 +1,66 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Book, Terminal, ShoppingCart, Package, Users, UserCog, BarChart3 } from 'lucide-react';
+import { ArrowLeft, Book, School, GraduationCap, BookOpen, Users, UserCog, BarChart3 } from 'lucide-react';
 
 const guideContent = {
   operations: {
-    title: 'Operations Technical Guide',
-    icon: Terminal,
-    description: 'Master the daily restaurant floor activities with our comprehensive operations guide.',
+    title: 'Academic Operations Guide',
+    icon: School,
+    description: 'Master the daily school activities with our comprehensive academic operations guide.',
     sections: [
-      { title: 'POS Billing Setup', content: 'Configure your Point of Sale system for rapid order entry and payment processing. Integrate with local printers and digital wallets.' },
-      { title: 'Kitchen Display System (KDS)', content: 'Set up real-time order displays in the kitchen to eliminate paper waste and improve communication between front-of-house and kitchen staff.' },
-      { title: 'Table Management', content: 'Design your floor plan digitally to track table occupancy, reservation status, and server assignments efficiently.' }
+      { title: 'Fee Management Setup', content: 'Configure your fee structure for rapid collection and payment processing. Integrate with local banks and digital wallets.' },
+      { title: 'Student Information System (SIS)', content: 'Set up real-time student dashboards to eliminate paper waste and improve communication between administration and parents.' },
+      { title: 'Classroom Tracking', content: 'Design your school layout digitally to track classroom occupancy, attendance status, and teacher assignments efficiently.' }
     ]
   },
   sales: {
-    title: 'Orders & Sales Technical Guide',
-    icon: ShoppingCart,
-    description: 'Detailed technical walkthrough for managing orders, KOTs, and invoicing.',
+    title: 'Admissions & Fees Guide',
+    icon: GraduationCap,
+    description: 'Detailed technical walkthrough for managing admissions, enrollments, and fee collection.',
     sections: [
-      { title: 'KOT Workflow', content: 'Understand the instant Kitchen Order Ticket generation process and how it synchronizes across all terminal stations.' },
-      { title: 'Digital Invoicing', content: 'Configure automated digital invoice generation and delivery via SMS or Email for a paperless experience.' },
-      { title: 'Split Billing Logic', content: 'Technical details on how our system handles complex bill splitting scenarios by item or by percentage.' }
+      { title: 'Admission Workflow', content: 'Understand the instant student enrollment process and how it synchronizes across all administration stations.' },
+      { title: 'Fee Receipt Generation', content: 'Configure automated digital fee receipt generation and delivery via SMS or Email for a paperless experience.' },
+      { title: 'Installment Plan Logic', content: 'Technical details on how our system handles complex fee installment scenarios by month or by term.' }
     ]
   },
   inventory: {
-    title: 'Stock Technical Guide',
-    icon: Package,
-    description: 'Optimize your inventory management and reduce wastage with these technical steps.',
+    title: 'Library & Assets Guide',
+    icon: BookOpen,
+    description: 'Optimize your library management and reduce resource wastage with these technical steps.',
     sections: [
-      { title: 'Live Inventory Tracking', content: 'Connect your POS sales to real-time ingredient depletion. Set up recipe-level tracking for maximum accuracy.' },
-      { title: 'Purchase Order Automation', content: 'Configure auto-generation of purchase orders when stock levels hit the predefined minimum threshold.' },
-      { title: 'Wastage Analytics', content: 'Log and analyze food wastage patterns to identify cost-saving opportunities in your kitchen.' }
+      { title: 'Live Book Tracking', content: 'Connect your library system to real-time book issuance and returns. Set up automated overdue alerts.' },
+      { title: 'Asset Procurement', content: 'Configure auto-generation of purchase orders when school supplies hit the predefined minimum threshold.' },
+      { title: 'Resource Analytics', content: 'Log and analyze resource usage patterns to identify cost-saving opportunities in your campus.' }
     ]
   },
   analytics: {
-    title: 'Analytics Technical Guide',
+    title: 'Academic Analytics Guide',
     icon: BarChart3,
-    description: 'Harness the power of data with our advanced analytics and reporting tools.',
+    description: 'Harness the power of data with our advanced academic analytics and progress reporting tools.',
     sections: [
-      { title: 'Data Collection Integration', content: 'Technical guide on how we collect and process visitor demographics and sales data in real-time.' },
-      { title: 'Custom Report Generation', content: 'Learn how to build and export custom business intelligence reports tailored to your restaurant\'s KPIs.' },
-      { title: 'Predictive Sales Modeling', content: 'How our AI engine uses historical data to predict future sales trends and staffing needs.' }
+      { title: 'Performance Integration', content: 'Technical guide on how we collect and process student demographics and academic results in real-time.' },
+      { title: 'Custom Report Generation', content: 'Learn how to build and export custom academic intelligence reports tailored to your school\'s KPIs.' },
+      { title: 'Predictive Progress Modeling', content: 'How our AI engine uses historical data to predict future student trends and resource needs.' }
     ]
   },
   crm: {
-    title: 'CRM Technical Guide',
+    title: 'Parent-Student Portal Guide',
     icon: Users,
-    description: 'Build lasting customer relationships using our integrated CRM modules.',
+    description: 'Build lasting relationships with parents and students using our integrated portal modules.',
     sections: [
-      { title: 'Guest Profiles & History', content: 'Manage detailed customer profiles, including dining preferences, allergy information, and visit history.' },
-      { title: 'Loyalty Program Engine', content: 'Set up points-based or tier-based loyalty programs with automated reward triggers.' },
-      { title: 'Vendor Management Portal', content: 'Streamline communication with your suppliers through a centralized portal for orders and payments.' }
+      { title: 'Student Profiles & History', content: 'Manage detailed student profiles, including academic preferences, attendance records, and health information.' },
+      { title: 'Scholarship Program Engine', content: 'Set up merit-based or need-based scholarship programs with automated eligibility triggers.' },
+      { title: 'Vendor Management Portal', content: 'Streamline communication with your uniform and book suppliers through a centralized portal.' }
     ]
   },
   hr: {
-    title: 'HRM Technical Guide',
+    title: 'Staff & Teacher Guide',
     icon: UserCog,
-    description: 'Manage your workforce effectively with role-based access and staff profiles.',
+    description: 'Manage your faculty effectively with role-based access and staff profiles.',
     sections: [
-      { title: 'Role-Based Access Control (RBAC)', content: 'Configure granular permissions for different staff roles (Manager, Waiter, Chef) to ensure data security.' },
-      { title: 'Staff Performance Tracking', content: 'Monitor individual staff performance metrics, attendance, and feedback through the HRM dashboard.' },
-      { title: 'Payroll Integration', content: 'Synchronize staff hours and commissions with your existing payroll systems for seamless processing.' }
+      { title: 'Role-Based Access Control (RBAC)', content: 'Configure granular permissions for different staff roles (Principal, Teacher, Accountant) to ensure data security.' },
+      { title: 'Teacher Performance Tracking', content: 'Monitor individual teacher performance metrics, attendance, and feedback through the HRM dashboard.' },
+      { title: 'Payroll Integration', content: 'Synchronize staff hours and benefits with your existing payroll systems for seamless processing.' }
     ]
   }
 };

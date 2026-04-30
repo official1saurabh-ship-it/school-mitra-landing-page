@@ -16,7 +16,7 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Home', path: '/', icon: Home },
-
+    { name: 'Features', path: '/features', icon: LayoutGrid },
     { name: 'Pricing', path: '#pricing', icon: CreditCard },
     { name: 'Support', path: '#support', icon: LifeBuoy },
   ];
@@ -36,7 +36,7 @@ const Navbar = () => {
           {/* Logo Section */}
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center gap-2 font-black text-2xl tracking-tight text-saas-accent">
-              Restron <span className="text-gray-900 font-bold">Mitra</span>
+              School <span className="text-gray-900 font-bold">Mitra</span>
             </Link>
           </div>
 

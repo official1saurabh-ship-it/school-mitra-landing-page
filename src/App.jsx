@@ -6,14 +6,18 @@ import FeaturesPage from './pages/FeaturesPage';
 import TechnicalGuide from './pages/TechnicalGuide';
 
 // Feature Pages
-import Pos_Billing from './Features/Pos_Billing';
-import Online_Ordering from './Features/Online_Ordering';
-import Table_Management from './Features/Table_Management';
-import Inventory_Stock from './Features/Inventory_Stock';
-import AnalyticsReport from './Features/AnalyticsReport';
-import BranchWiseDetails from './Features/BranchWiseDetails';
-import RoleBasedPermission from './Features/RoleBasedPermission';
-import AnalyticsReports from './Features/AnalyticsReport';
+import AcademicManagement from './features/AcademicManagement';
+import StaffManagement from './features/StaffManagement';
+import FinanceManagement from './features/FinanceManagement';
+import Communication from './features/Communication';
+import ParentStudentPortal from './features/ParentStudentPortal';
+import Administration from './features/Administration';
+import TransportManagement from './features/TransportManagement';
+import LibraryManagement from './features/LibraryManagement';
+import HostelManagement from './features/HostelManagement';
+import OtherFacilities from './features/OtherFacilities';
+import ReportsAnalytics from './features/ReportsAnalytics';
+import TechnicalSystemFeatures from './features/TechnicalSystemFeatures';
 
 function App() {
   return (
@@ -25,13 +29,18 @@ function App() {
         <Route path="/technical-guide/:category" element={<TechnicalGuide />} />
 
         {/* Feature Routes */}
-        <Route path="/pos-billing" element={<Pos_Billing />} />
-        <Route path="/online-ordering" element={<Online_Ordering />} />
-        <Route path="/table-management" element={<Table_Management />} />
-        <Route path="/inventory-stock" element={<Inventory_Stock />} />
-        <Route path="/analytics-reports" element={<AnalyticsReport />} />
-        <Route path="/branch-details" element={<BranchWiseDetails />} />
-        <Route path="/role-permissions" element={<RoleBasedPermission />} />
+        <Route path="/features/academic-management" element={<AcademicManagement />} />
+        <Route path="/features/staff-management" element={<StaffManagement />} />
+        <Route path="/features/finance-management" element={<FinanceManagement />} />
+        <Route path="/features/communication" element={<Communication />} />
+        <Route path="/features/parent-student-portal" element={<ParentStudentPortal />} />
+        <Route path="/features/administration" element={<Administration />} />
+        <Route path="/features/transport-management" element={<TransportManagement />} />
+        <Route path="/features/library-management" element={<LibraryManagement />} />
+        <Route path="/features/hostel-management" element={<HostelManagement />} />
+        <Route path="/features/other-facilities" element={<OtherFacilities />} />
+        <Route path="/features/reports-analytics" element={<ReportsAnalytics />} />
+        <Route path="/features/technical-system-features" element={<TechnicalSystemFeatures />} />
       </Routes>
     </div>
 

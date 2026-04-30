@@ -13,9 +13,9 @@ const Card1 = ({ image, heading, description, index }) => {
             gradient: "from-green-500 to-emerald-500",
         },
         {
-            bg: "bg-purple-100",
-            border: "border-purple-500",
-            gradient: "from-purple-500 to-pink-500",
+            bg: "bg-indigo-100",
+            border: "border-indigo-600",
+            gradient: "from-indigo-600 to-blue-600",
         },
     ];
 

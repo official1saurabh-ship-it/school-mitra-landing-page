@@ -18,7 +18,7 @@ const SaaSHero = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-saas-accent/10 border border-saas-accent/20 text-saas-accent text-sm font-medium mb-8"
           >
             <Sparkles className="w-4 h-4" />
-            <span>Powering the next generation of restaurants</span>
+            <span>Powering the next generation of schools</span>
           </motion.div>
           
           <motion.h1 
@@ -28,8 +28,8 @@ const SaaSHero = () => {
             className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6"
           >
             All-in-One <br />
-            <span className="bg-gradient-to-r from-saas-accent to-purple-400 bg-clip-text text-transparent">
-              Restaurant Management
+            <span className="bg-gradient-to-r from-saas-accent to-blue-400 bg-clip-text text-transparent">
+              School Management
             </span>
           </motion.h1>
           
@@ -39,7 +39,7 @@ const SaaSHero = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-gray-400 text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            Everything you need to run and grow your restaurant. From POS billing to HR management, we've got you covered with a premium, integrated experience.
+            Everything you need to manage and grow your school. From student records to staff management, we've got you covered with a premium, integrated experience.
           </motion.p>
           
           <motion.div 
