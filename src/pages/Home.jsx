@@ -1,25 +1,25 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import laptop from "../assets/laptop-mobile.png";
+import school from "../assets/schoolimage.png";
 import cloud from "../assets/cloud.png";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import girl from "../assets/Girl.png";
 import tables from "../assets/dashboard.png";
 import overview from "../assets/overview.jpeg";
-import { 
-  CheckCircle, 
-  TrendingUp, 
-  BarChart3, 
-  Users, 
-  Star, 
-  Quote, 
-  LayoutGrid, 
-  Smartphone, 
-  Coffee, 
-  ClipboardList, 
-  PieChart, 
-  ShieldCheck, 
+import {
+  CheckCircle,
+  TrendingUp,
+  BarChart3,
+  Users,
+  Star,
+  Quote,
+  LayoutGrid,
+  Smartphone,
+  Coffee,
+  ClipboardList,
+  PieChart,
+  ShieldCheck,
   CreditCard,
   GraduationCap,
   MessageSquare,
@@ -167,8 +167,8 @@ const Home = () => {
           scrollTrigger: {
             trigger: stackedSectionRef.current,
             start: "top top",
-            end: `+=${totalCards * 20}%`, // Ultra-short: 20% scroll per card
-            scrub: true, // Instant response
+            end: `+=${totalCards * 150}%`, // Much more scroll distance per card
+            scrub: true,
             pin: true,
             anticipatePin: 1,
           }
@@ -176,46 +176,52 @@ const Home = () => {
 
         // Initial setup
         cards.forEach((card, i) => {
-          gsap.set(card, { 
-            y: i === 0 ? 0 : 180, 
-            opacity: i === 0 ? 1 : i === 1 ? 0.3 : 0, 
-            scale: i === 0 ? 1 : 0.85,
-            rotateX: i === 0 ? 0 : -5, 
-            zIndex: totalCards - i 
+          gsap.set(card, {
+            y: i === 0 ? 0 : 200,
+            z: i === 0 ? 0 : -200,
+            autoAlpha: i === 0 ? 1 : i === 1 ? 0.4 : 0,
+            scale: i === 0 ? 1 : 0.9,
+            rotateX: i === 0 ? 0 : -10,
+            rotateY: i === 0 ? 0 : 5,
+            transformPerspective: 2000,
+            zIndex: totalCards - i,
+            pointerEvents: i === 0 ? "auto" : "none" // Only show first two initially
           });
         });
 
         // Instant transition sequence
         for (let i = 0; i < totalCards; i++) {
           if (i < totalCards - 1) {
-            tl.to(cards[i], {
-              y: -1200,
-              opacity: 0,
-              scale: 0.5,
-              rotateX: 20,
-              duration: 0.4,
-              ease: "power2.inOut"
-            }, i * 0.4) // Sequential feel
-            
-            .to(cards[i+1], {
-              y: 0,
-              opacity: 1,
-              scale: 1,
-              rotateX: 0,
-              duration: 0.4,
-              ease: "power2.inOut"
-            }, i * 0.4);
-
+            // Before transition starts, prepare the next-next card
             if (i + 2 < totalCards) {
-              tl.to(cards[i+2], {
-                y: 180,
-                opacity: 0.3,
-                scale: 0.85,
-                rotateX: -5,
-                duration: 0.4,
-                ease: "power2.inOut"
-              }, i * 0.4);
+              tl.set(cards[i + 2], { display: "flex", autoAlpha: 0 }, i * 2.5);
             }
+
+            tl.to(cards[i], {
+              y: -1500,
+              z: 600,
+              autoAlpha: 0,
+              scale: 0.5,
+              rotateX: 30,
+              rotateY: -15,
+              pointerEvents: "none", // ✅ ADD THIS
+              duration: 2.5,
+              ease: "power2.inOut",
+            }, i * 2.5)
+              // Completely remove from hit-testing after it's gone
+
+
+              .to(cards[i + 1], {
+                y: 0,
+                z: 0,
+                autoAlpha: 1,
+                scale: 1,
+                rotateX: 0,
+                pointerEvents: "auto", // ✅ ADD THIS
+                duration: 2.5,
+                ease: "power2.inOut",
+              }, i * 2.5)
+              .set(cards[i + 1], { zIndex: totalCards + 10 }, i * 2.5 + 1.25);
           }
         }
       }
@@ -228,6 +234,7 @@ const Home = () => {
       clearTimeout(timeout);
     };
   }, []);
+
 
   return (
     <div
@@ -276,7 +283,7 @@ const Home = () => {
         style={{ perspective: "1000px" }}
       >
         <img
-          src={laptop}
+          src={school}
           alt="Laptop Illustration"
           ref={imageRef}
           className="w-[85%] h-[85vh] origin-center will-change-transform"
@@ -319,7 +326,7 @@ const Home = () => {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
+                transition={{ duration: 1.5, delay: i * 0.3 }}
                 className="flex gap-4 group cursor-pointer"
               >
                 <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-white shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-md group-hover:border-blue-200 transition-all duration-300">
@@ -413,8 +420,8 @@ const Home = () => {
       {/* What Do We Do Section - Pinned Stacked Cards */}
       <section ref={stackedSectionRef} className="relative z-20 bg-slate-950 overflow-hidden">
         <div className="min-h-screen w-full flex flex-col items-center justify-center px-6 py-20">
-          
-          <div className="text-center space-y-4 mb-16 relative z-30">
+
+          <div className="text-center space-y-4 mb-16 relative z-30 pointer-events-none">
             <motion.h2
               className="text-4xl md:text-6xl font-black text-white"
             >
@@ -427,12 +434,12 @@ const Home = () => {
             </motion.p>
           </div>
 
-          <div className="relative w-full max-w-4xl h-[500px] flex items-center justify-center">
+          <div className="relative w-full max-w-4xl h-[600px] flex items-center justify-center" style={{ transformStyle: "preserve-3d", perspective: "2500px" }}>
             {featureItems.map((item, i) => (
               <div
                 key={i}
                 ref={el => cardsRef.current[i] = el}
-                className="absolute w-full h-full flex items-center justify-center pointer-events-none"
+                className="absolute w-full h-full flex items-center justify-center "
               >
                 <Link
                   to={item.path}
@@ -441,7 +448,7 @@ const Home = () => {
                   <div className={`w-24 h-24 md:w-32 md:h-32 rounded-3xl ${item.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                     <item.icon className="w-12 h-12 md:w-16 md:h-16 text-white" />
                   </div>
-                  
+
                   <div className="flex-1 text-center md:text-left space-y-4">
                     <h3 className="text-3xl md:text-5xl font-black text-white group-hover:text-blue-500 transition-colors duration-200">
                       {item.title}
@@ -449,8 +456,8 @@ const Home = () => {
                     <p className="text-slate-400 text-lg md:text-xl leading-relaxed font-medium">
                       {item.desc}
                     </p>
-                    <div className="inline-flex items-center gap-2 text-blue-500 font-bold tracking-widest text-sm pt-4 uppercase">
-                      Explore Module <TrendingUp className="w-4 h-4" />
+                    <div className="inline-flex items-center gap-2 text-blue-500 font-bold tracking-widest text-sm pt-4 uppercase group-hover:gap-3 transition-all duration-300 active:scale-95">
+                      Explore Module <TrendingUp className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </div>
                   </div>
 
@@ -515,9 +522,9 @@ const Home = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ 
-                  duration: 0.4, 
-                  delay: i * 0.05,
+                transition={{
+                  duration: 1.5,
+                  delay: i * 0.3,
                   ease: "easeOut"
                 }}
                 className="group p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-slate-200/50 transition-all duration-500 relative overflow-hidden"
@@ -528,10 +535,8 @@ const Home = () => {
                 </div>
                 <h3 className="text-2xl font-black text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">{item.title}</h3>
                 <p className="text-slate-500 leading-relaxed font-medium">{item.desc}</p>
-                <div className="mt-8 flex items-center text-sm font-bold text-slate-300 group-hover:text-blue-600 transition-colors gap-2">
-                  <span>LEARN MORE</span>
-                  <div className="h-px w-8 bg-slate-200 group-hover:w-12 group-hover:bg-blue-600 transition-all duration-500" />
-                </div>
+
+
               </motion.div>
             ))}
           </div>
@@ -539,62 +544,60 @@ const Home = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-24 relative z-10 ">
-        <div className="min-w-7xl mx-auto px-6">
-          <div className="bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
-            <div className="lg:w-5/12 p-12 lg:p-16 bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex flex-col justify-between">
-              <div>
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="text-4xl md:text-5xl font-black mb-6 leading-tight"
-                >
-                  Ready to Transform Your <br />
-                  <span className="text-blue-200">School?</span>
-                </motion.h2>
-                <p className="text-blue-100 text-lg font-medium leading-relaxed opacity-90">
-                  Join hundreds of successful institutions who have simplified their operations with School Mitra.
-                </p>
-              </div>
+      <section className="py-24 px-6">
+        <div className="max-w-7xl mx-auto bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+          <div className="lg:w-5/12 p-12 lg:p-16 bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex flex-col justify-between">
+            <div>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-4xl md:text-5xl font-black mb-6 leading-tight"
+              >
+                Ready to Transform Your <br />
+                <span className="text-blue-200">School?</span>
+              </motion.h2>
+              <p className="text-blue-100 text-lg font-medium leading-relaxed opacity-90">
+                Join hundreds of successful institutions who have simplified their operations with School Mitra.
+              </p>
+            </div>
 
-              <div className="mt-12 space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center"><CheckCircle className="w-6 h-6 text-blue-200" /></div>
-                  <span className="font-bold">Free demo & setup</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center"><CheckCircle className="w-6 h-6 text-blue-200" /></div>
-                  <span className="font-bold">24/7 Technical Support</span>
-                </div>
+            <div className="mt-12 space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center"><CheckCircle className="w-6 h-6 text-blue-200" /></div>
+                <span className="font-bold">Free demo & setup</span>
               </div>
-
-              <div className="mt-12 pt-12 border-t border-white/10">
-                <p className="text-sm font-bold uppercase tracking-widest text-blue-200 mb-2">Email us at</p>
-                <p className="text-2xl font-black">info@biosoftech.com</p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center"><CheckCircle className="w-6 h-6 text-blue-200" /></div>
+                <span className="font-bold">24/7 Technical Support</span>
               </div>
             </div>
 
-            <div className="lg:w-7/12 p-12 lg:p-16">
-              <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={(e) => e.preventDefault()}>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-400 uppercase tracking-wider">Full Name</label>
-                  <input type="text" placeholder="Amit Sharma" className="w-full bg-slate-800 border border-slate-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition-all font-medium" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-400 uppercase tracking-wider">School Name</label>
-                  <input type="text" placeholder="Modern Public School" className="w-full bg-slate-800 border border-slate-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition-all font-medium" />
-                </div>
-                <div className="space-y-2 md:col-span-2">
-                  <textarea rows="4" placeholder="Tell us about your requirements..." className="w-full bg-slate-800 border border-slate-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition-all font-medium resize-none"></textarea>
-                </div>
-                <div className="md:col-span-2 pt-4">
-                  <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl shadow-xl transition-all text-lg">
-                    Send Message
-                  </motion.button>
-                </div>
-              </form>
+            <div className="mt-12 pt-12 border-t border-white/10">
+              <p className="text-sm font-bold uppercase tracking-widest text-blue-200 mb-2">Email us at</p>
+              <p className="text-2xl font-black">info@biosoftech.com</p>
             </div>
+          </div>
+
+          <div className="lg:w-7/12 p-12 lg:p-16">
+            <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={(e) => e.preventDefault()}>
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-slate-400 uppercase tracking-wider">Full Name</label>
+                <input type="text" placeholder="Amit Sharma" className="w-full bg-slate-800 border border-slate-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition-all font-medium" />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-slate-400 uppercase tracking-wider">School Name</label>
+                <input type="text" placeholder="Modern Public School" className="w-full bg-slate-800 border border-slate-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition-all font-medium" />
+              </div>
+              <div className="space-y-2 md:col-span-2">
+                <textarea rows="4" placeholder="Tell us about your requirements..." className="w-full bg-slate-800 border border-slate-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition-all font-medium resize-none"></textarea>
+              </div>
+              <div className="md:col-span-2 pt-4">
+                <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl shadow-xl transition-all text-lg">
+                  Send Message
+                </motion.button>
+              </div>
+            </form>
           </div>
         </div>
       </section>

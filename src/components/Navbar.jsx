@@ -17,8 +17,8 @@ const Navbar = () => {
   const navItems = [
     { name: 'Home', path: '/', icon: Home },
     { name: 'Features', path: '/features', icon: LayoutGrid },
-    { name: 'Pricing', path: '#pricing', icon: CreditCard },
-    { name: 'Support', path: '#support', icon: LifeBuoy },
+    { name: 'Pricing', path: '/pricing', icon: CreditCard },
+    { name: 'Support', path: '/support', icon: LifeBuoy },
   ];
 
   // Helper function to determine if a link is active

@@ -18,6 +18,9 @@ import HostelManagement from './features/HostelManagement';
 import OtherFacilities from './features/OtherFacilities';
 import ReportsAnalytics from './features/ReportsAnalytics';
 import TechnicalSystemFeatures from './features/TechnicalSystemFeatures';
+import PricingPage from './pages/PricingPage';
+import SupportPage from './pages/SupportPage';
+
 
 function App() {
   return (
@@ -41,6 +44,8 @@ function App() {
         <Route path="/features/other-facilities" element={<OtherFacilities />} />
         <Route path="/features/reports-analytics" element={<ReportsAnalytics />} />
         <Route path="/features/technical-system-features" element={<TechnicalSystemFeatures />} />
+        <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/support" element={<SupportPage />} />
       </Routes>
     </div>
 
