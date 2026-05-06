@@ -1,10 +1,11 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import school from "../assets/schoolimage.png";
-import cloud from "../assets/cloud.png";
+import school from "../assets/school.png";
+import schoolimage from "../assets/schoolimage.png";
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import girl from "../assets/Girl.png";
+import girl from "../assets/Advantagesimg.png";
 import tables from "../assets/dashboard.png";
 import overview from "../assets/overview.jpeg";
 import {
@@ -149,10 +150,10 @@ const Home = () => {
           rotateY: 0,
           ease: "none",
           scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 85%",
-            end: "top 20%",
-            scrub: true, // Perfect sync
+            trigger: imageRef.current,
+            start: "top bottom",
+            end: "bottom bottom",
+            scrub: true,
             invalidateOnRefresh: true,
           },
         });
@@ -250,71 +251,38 @@ const Home = () => {
 
       <main className="w-full pt-8 relative z-10">
         <img
-          src={cloud}
+          src={school}
           alt="Cloud Illustration"
           className="w-full h-auto block"
         />
       </main>
 
-      <div id="class" className="max-w-4xl mx-auto text-center space-y-6 pt-12 pb-24 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-5xl md:text-7xl font-black text-slate-900 leading-tight"
-        >
-          The Operating System for <br />
-          <span className="text-blue-600">Modern Schools</span>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-xl text-slate-500 font-medium max-w-2xl mx-auto"
-        >
-          Admissions, fees, and results sab ek hi jagah — bina tension ke.
-        </motion.div>
-      </div>
 
-      <div className="h-20"></div>
-
-      <div
-        ref={sectionRef}
-        className="w-full flex items-center justify-center pb-40 relative z-10"
-        style={{ perspective: "1000px" }}
-      >
-        <img
-          src={school}
-          alt="Laptop Illustration"
-          ref={imageRef}
-          className="w-[85%] h-[85vh] origin-center will-change-transform"
-          style={{ transformStyle: "preserve-3d" }}
-        />
-      </div>
 
       {/* Why Choose Us Section */}
-      <div className="min-w-7xl mx-auto px-6 py-20 text-slate-900 flex flex-col lg:flex-row items-stretch gap-12 relative z-10">
-        <div className="lg:w-5/12 space-y-8 flex flex-col justify-center py-4">
+      <section className="w-full px-4 sm:px-8 lg:px-12 py-12 lg:py-24 text-slate-900 flex flex-col lg:flex-row items-stretch gap-8 lg:gap-12 relative z-10">
+        <div className="w-full lg:w-1/2 space-y-6 lg:space-y-10 flex flex-col justify-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100/50 backdrop-blur-md border border-blue-200/50 text-xs font-bold tracking-widest text-blue-700 w-fit"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100/50 backdrop-blur-md border border-blue-200/50 text-[10px] lg:text-xs font-bold tracking-widest text-blue-700 w-fit uppercase"
           >
-            <Star className="w-4 h-4 text-blue-600 fill-blue-600" />
+            <Star className="w-3 h-3 lg:w-4 h-4 text-blue-600 fill-blue-600" />
             <span>LOVED BY SCHOOL ADMINISTRATORS</span>
           </motion.div>
 
           <div className="space-y-4">
-            <h2 className="text-4xl md:text-6xl font-black leading-tight text-slate-900">
-              Why Our <span className="text-blue-600"> Clients</span> <br />
+            <h2 className="text-3xl sm:text-4xl lg:text-7xl font-black leading-[1.1] text-slate-900">
+              Why Our <span className="text-blue-600"> Clients</span> <br className="hidden sm:block" />
               <span className="text-slate-400">Love Us</span>
             </h2>
-            <p className="text-lg md:text-xl text-slate-600 font-medium max-w-xl leading-relaxed">
+            <p className="text-base lg:text-xl text-slate-600 font-medium max-w-3xl leading-relaxed">
               We don't just provide software; we become the <span className="underline decoration-blue-300 decoration-4 underline-offset-4">growth partner</span> for your school's success.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
             {[
               { icon: CheckCircle, title: "Simplify School Ops", desc: "Manage admissions, attendance, and fees in a few clicks" },
               { icon: TrendingUp, title: "Increase Efficiency", desc: "Reduce manual paperwork and save valuable time" },
@@ -326,30 +294,30 @@ const Home = () => {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1.5, delay: i * 0.3 }}
+                transition={{ duration: 1, delay: i * 0.1 }}
                 className="flex gap-4 group cursor-pointer"
               >
-                <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-white shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-md group-hover:border-blue-200 transition-all duration-300">
-                  <item.icon className="w-6 h-6 text-slate-400 group-hover:text-blue-600 group-hover:scale-110 transition-all duration-300" />
+                <div className="flex-shrink-0 w-10 h-10 lg:w-12 h-12 rounded-2xl bg-white shadow-sm border border-slate-100 flex items-center justify-center group-hover:shadow-md group-hover:border-blue-200 transition-all duration-300">
+                  <item.icon className="w-5 h-5 lg:w-6 h-6 text-slate-400 group-hover:text-blue-600 group-hover:scale-110 transition-all duration-300" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg text-slate-800 group-hover:text-blue-700 transition-colors">{item.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                  <h3 className="font-bold text-base lg:text-lg text-slate-800 group-hover:text-blue-700 transition-colors">{item.title}</h3>
+                  <p className="text-slate-500 text-xs lg:text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 lg:gap-4 pt-4">
             {[
               { val: "500+", label: "Schools" },
               { val: "30%", label: "Avg. Efficiency" },
               { val: "40%", label: "Less Paperwork" },
               { val: "4.8/5", label: "Rating" }
             ].map((stat, i) => (
-              <div key={i} className="p-4 rounded-2xl bg-white border border-slate-100 text-center shadow-sm hover:shadow-md transition-shadow">
-                <div className="text-2xl font-black text-slate-900">{stat.val}</div>
-                <div className="text-[10px] uppercase tracking-wider font-bold text-slate-400">{stat.label}</div>
+              <div key={i} className="p-3 lg:p-4 rounded-2xl bg-white border border-slate-100 text-center shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-lg lg:text-2xl font-black text-slate-900">{stat.val}</div>
+                <div className="text-[8px] lg:text-[10px] uppercase tracking-wider font-bold text-slate-400">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -358,64 +326,35 @@ const Home = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative p-8 rounded-3xl bg-white/70 backdrop-blur-xl border border-white shadow-xl overflow-hidden group"
+            className="relative p-6 lg:p-8 rounded-3xl bg-white/70 backdrop-blur-xl border border-white shadow-xl overflow-hidden group max-w-2xl"
           >
-            <Quote className="absolute -right-4 -top-4 w-32 h-32 text-blue-50 rotate-12" />
-            <p className="relative z-10 text-lg font-medium italic leading-relaxed text-slate-700">
+            <Quote className="absolute -right-4 -top-4 w-24 lg:w-32 h-24 lg:h-32 text-blue-50 rotate-12" />
+            <p className="relative z-10 text-base lg:text-lg font-medium italic leading-relaxed text-slate-700">
               "School Mitra has completely transformed the way we manage our institution. It's smart, simple, and super effective!"
             </p>
             <div className="mt-6 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-blue-100 to-indigo-100 flex items-center justify-center font-bold border border-white shadow-inner text-blue-700">
+              <div className="w-10 h-10 lg:w-12 h-12 rounded-full bg-gradient-to-tr from-blue-100 to-indigo-100 flex items-center justify-center font-bold border border-white shadow-inner text-blue-700 text-sm lg:text-base">
                 RK
               </div>
               <div>
-                <div className="font-black text-slate-900">Rajesh Khanna</div>
-                <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">Principal, St. Xavier's School</div>
+                <div className="font-black text-slate-900 text-sm lg:text-base">Rajesh Khanna</div>
+                <div className="text-[10px] lg:text-xs font-bold text-slate-400 uppercase tracking-widest">Principal, St. Xavier's School</div>
               </div>
             </div>
           </motion.div>
         </div>
 
-        <div className="lg:w-7/12 relative">
-          <div className="relative w-full h-full min-h-[600px] lg:min-h-0 flex items-end justify-center overflow-hidden rounded-3xl bg-slate-50/50 border border-slate-100 shadow-inner">
-            <div className="absolute inset-0 animate-float">
-              <img
-                src={girl}
-                alt="Happy School Administrator"
-                className="h-full w-full object-cover object-center opacity-95"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent" />
-            </div>
-
-            {/* Floating UI Elements */}
-            <motion.div
-              animate={{ y: [0, -20, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute left-8 top-[10%] z-20 w-56 md:w-72 rotate-[-5deg]"
-            >
-              <img
-                src={tables}
-                alt="School Dashboard Preview"
-                className="rounded-2xl shadow-2xl border-4 border-white backdrop-blur-xl"
-              />
-            </motion.div>
-
-            <motion.div
-              animate={{ y: [0, 20, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute right-8 bottom-[10%] z-20 w-56 md:w-72 rotate-[5deg]"
-            >
-              <img
-                src={overview}
-                alt="Student Analytics Preview"
-                className="rounded-2xl shadow-2xl border-4 border-white backdrop-blur-xl"
-              />
-            </motion.div>
-
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-100/30 blur-[120px] rounded-full -z-10" />
+        {/* Image Section */}
+        <div className="w-full lg:w-1/2">
+          <div className="w-full h-full min-h-[400px] lg:min-h-0 overflow-hidden rounded-[2rem] lg:rounded-[3rem]">
+            <img
+              src={girl}
+              alt="Happy School Administrator"
+              className="w-full h-full object-fill"
+            />
           </div>
         </div>
-      </div>
+      </section>
 
       {/* What Do We Do Section - Pinned Stacked Cards */}
       <section ref={stackedSectionRef} className="relative z-20 bg-slate-950 overflow-hidden">

@@ -1,13 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { 
-  ArrowLeft, 
-  Mail, 
-  Bell, 
-  MessageSquare, 
-  Megaphone, 
-  Clipboard 
+import {
+  ArrowLeft,
+  Mail,
+  Bell,
+  MessageSquare,
+  Megaphone,
+  Clipboard
 } from 'lucide-react';
 import Scene3D from '../components/Scene3D';
 
@@ -25,7 +25,7 @@ const Communication = () => {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900">
       {/* Hero Section */}
-      <section className="relative h-[80vh] min-h-[600px] flex items-center bg-slate-950 overflow-hidden">
+      <section className="relative h-[40vh] min-h-[600px] flex items-center bg-slate-950 overflow-hidden">
         <Scene3D type="communication" />
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-slate-950/20 via-transparent to-slate-950 z-10" />
         <div className="max-w-7xl mx-auto px-6 relative z-20">
@@ -48,12 +48,12 @@ const Communication = () => {
       <section className="py-24 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((f, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}              className="p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:shadow-2xl hover:shadow-blue-500/10 transition-all group"
+              transition={{ delay: i * 0.05 }} className="p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:shadow-2xl hover:shadow-blue-500/10 transition-all group"
             >
               <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-blue-600 transition-colors">
                 <f.icon className="w-7 h-7 text-blue-600 group-hover:text-white transition-colors" />

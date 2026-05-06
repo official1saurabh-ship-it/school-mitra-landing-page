@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
 
 import Home from './pages/Home';
-import FeaturesPage from './pages/FeaturesPage';
 import TechnicalGuide from './pages/TechnicalGuide';
 
 // Feature Pages
@@ -20,16 +20,23 @@ import ReportsAnalytics from './features/ReportsAnalytics';
 import TechnicalSystemFeatures from './features/TechnicalSystemFeatures';
 import PricingPage from './pages/PricingPage';
 import SupportPage from './pages/SupportPage';
+import AboutUs from './pages/AboutUs';
 
+import ContactPage from './pages/ContactPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
+import SettingsPage from './features/SettingsPage';
 
 function App() {
   return (
-
     <div className="App">
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/features" element={<FeaturesPage />} />
         <Route path="/technical-guide/:category" element={<TechnicalGuide />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/privacypolicy" element={<PrivacyPolicyPage />} />
+        <Route path="/termsofservice" element={<TermsOfServicePage />} />
 
         {/* Feature Routes */}
         <Route path="/features/academic-management" element={<AcademicManagement />} />
@@ -44,14 +51,15 @@ function App() {
         <Route path="/features/other-facilities" element={<OtherFacilities />} />
         <Route path="/features/reports-analytics" element={<ReportsAnalytics />} />
         <Route path="/features/technical-system-features" element={<TechnicalSystemFeatures />} />
+
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/support" element={<SupportPage />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/settings" element={<SettingsPage />} />
       </Routes>
-    </div>
 
+    </div>
   );
 }
 
 export default App;
-
-
