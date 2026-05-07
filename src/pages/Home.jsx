@@ -40,8 +40,6 @@ gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
   const imageRef = useRef(null);
   const sectionRef = useRef(null);
-  const stackedSectionRef = useRef(null);
-  const cardsRef = useRef([]);
 
   const featureItems = [
     {
@@ -160,74 +158,7 @@ const Home = () => {
         });
       }
 
-      // 2. Stacked Features Animation - Instant Response
-      if (stackedSectionRef.current) {
-        const cards = cardsRef.current;
-        const totalCards = cards.length;
-
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: stackedSectionRef.current,
-            start: "top top",
-            end: `+=${totalCards * 150}%`, // Much more scroll distance per card
-            scrub: true,
-            pin: true,
-            anticipatePin: 1,
-          }
-        });
-
-        // Initial setup
-        cards.forEach((card, i) => {
-          gsap.set(card, {
-            y: i === 0 ? 0 : 200,
-            z: i === 0 ? 0 : -200,
-            autoAlpha: i === 0 ? 1 : i === 1 ? 0.4 : 0,
-            scale: i === 0 ? 1 : 0.9,
-            rotateX: i === 0 ? 0 : -10,
-            rotateY: i === 0 ? 0 : 5,
-            transformPerspective: 2000,
-            zIndex: totalCards - i,
-            pointerEvents: i === 0 ? "auto" : "none" // Only show first two initially
-          });
-        });
-
-        // Instant transition sequence
-        for (let i = 0; i < totalCards; i++) {
-          if (i < totalCards - 1) {
-            // Before transition starts, prepare the next-next card
-            if (i + 2 < totalCards) {
-              tl.set(cards[i + 2], { display: "flex", autoAlpha: 0 }, i * 2.5);
-            }
-
-            tl.to(cards[i], {
-              y: -1500,
-              z: 600,
-              autoAlpha: 0,
-              scale: 0.5,
-              rotateX: 30,
-              rotateY: -15,
-              pointerEvents: "none", // ✅ ADD THIS
-              duration: 2.5,
-              ease: "power2.inOut",
-            }, i * 2.5)
-              // Completely remove from hit-testing after it's gone
-
-
-              .to(cards[i + 1], {
-                y: 0,
-                z: 0,
-                autoAlpha: 1,
-                scale: 1,
-                rotateX: 0,
-                pointerEvents: "auto", // ✅ ADD THIS
-                duration: 2.5,
-                ease: "power2.inOut",
-              }, i * 2.5)
-              .set(cards[i + 1], { zIndex: totalCards + 10 }, i * 2.5 + 1.25);
-          }
-        }
-      }
-    }, [sectionRef, stackedSectionRef]);
+    }, [sectionRef]);
 
     const timeout = setTimeout(() => ScrollTrigger.refresh(), 100);
 
@@ -349,53 +280,62 @@ const Home = () => {
         </div>
       </section>
 
-      {/* What Do We Do Section - Pinned Stacked Cards */}
-      <section ref={stackedSectionRef} className="relative z-20 bg-slate-950 overflow-hidden">
-        <div className="min-h-screen w-full flex flex-col items-center justify-center px-6 py-20">
+      {/* What Do We Do Section - Listing Layout */}
+      <section className="relative z-20 bg-slate-950 overflow-hidden py-24">
+        <div className="w-full max-w-7xl mx-auto px-6">
 
-          <div className="text-center space-y-4 mb-16 relative z-30 pointer-events-none">
+          <div className="text-center space-y-4 mb-20 relative z-30">
             <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               className="text-4xl md:text-6xl font-black text-white"
             >
               What Do <span className="text-blue-600">We Do</span>
             </motion.h2>
             <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
               className="text-slate-400 font-medium max-w-2xl mx-auto text-lg"
             >
-              Scroll to explore our ecosystem — empowering Schools through integrated solutions.
+              Explore our ecosystem — empowering Schools through integrated solutions.
             </motion.p>
           </div>
 
-          <div className="relative w-full max-w-4xl h-[600px] flex items-center justify-center" style={{ transformStyle: "preserve-3d", perspective: "2500px" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featureItems.map((item, i) => (
-              <div
+              <motion.div
                 key={i}
-                ref={el => cardsRef.current[i] = el}
-                className="absolute w-full h-full flex items-center justify-center "
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
               >
                 <Link
                   to={item.path}
-                  className="group pointer-events-auto relative flex flex-col md:flex-row items-center gap-8 p-10 md:p-16 rounded-[3rem] bg-slate-900 border border-slate-800 shadow-2xl transition-all duration-200 hover:border-blue-500/50 will-change-transform"
+                  className="group relative flex flex-col h-full p-8 rounded-[2rem] bg-slate-900 border border-slate-800 shadow-xl transition-all duration-300 hover:border-blue-500/50 hover:shadow-blue-500/10"
                 >
-                  <div className={`w-24 h-24 md:w-32 md:h-32 rounded-3xl ${item.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                    <item.icon className="w-12 h-12 md:w-16 md:h-16 text-white" />
+                  <div className={`w-16 h-16 rounded-2xl ${item.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 mb-6`}>
+                    <item.icon className="w-8 h-8 text-white" />
                   </div>
 
-                  <div className="flex-1 text-center md:text-left space-y-4">
-                    <h3 className="text-3xl md:text-5xl font-black text-white group-hover:text-blue-500 transition-colors duration-200">
+                  <div className="space-y-4">
+                    <h3 className="text-2xl font-black text-white group-hover:text-blue-500 transition-colors duration-200">
                       {item.title}
                     </h3>
-                    <p className="text-slate-400 text-lg md:text-xl leading-relaxed font-medium">
+                    <p className="text-slate-400 text-base leading-relaxed font-medium">
                       {item.desc}
                     </p>
-                    <div className="inline-flex items-center gap-2 text-blue-500 font-bold tracking-widest text-sm pt-4 uppercase group-hover:gap-3 transition-all duration-300 active:scale-95">
+                    <div className="inline-flex items-center gap-2 text-blue-500 font-bold tracking-widest text-xs pt-4 uppercase group-hover:gap-3 transition-all duration-300">
                       Explore Module <TrendingUp className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </div>
                   </div>
 
                   <div className={`absolute -inset-4 ${item.color} opacity-0 group-hover:opacity-5 blur-3xl transition-opacity duration-300`} />
                 </Link>
-              </div>
+              </motion.div>
             ))}
           </div>
 
