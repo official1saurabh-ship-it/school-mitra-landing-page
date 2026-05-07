@@ -28,12 +28,12 @@ export default function HeroSection() {
         },
     ];
     return (
-        <section className="w-full bg-gradient-to-r from-[#eef3ff] to-[#e6f0ff] py-12 px-4 sm:px-8 lg:px-16">
+        <section className="relative w-full bg-gradient-to-r from-[#eef3ff] to-[#e6f0ff] py-12 px-4 sm:px-8 lg:px-16 overflow-hidden">
 
-            <div className="w-full max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
+            <div className="relative w-full max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
 
                 {/* LEFT CONTENT */}
-                <div>
+                <div className="relative z-10">
 
                     {/* Logo + Title */}
                     <div className="flex items-center gap-3 mb-4">
@@ -90,12 +90,12 @@ export default function HeroSection() {
                 </div>
 
                 {/* RIGHT IMAGE */}
-                <div className="relative flex justify-center">
+                <div className="absolute lg:relative inset-0 lg:inset-auto flex justify-center items-center lg:items-stretch opacity-20 lg:opacity-100 z-0 lg:z-auto pointer-events-none lg:pointer-events-auto">
 
                     <img
                         src={Laptopbag} // replace with your image path
                         alt="Dashboard"
-                        className="w-full object-contain"
+                        className="w-full max-w-[500px] lg:max-w-full object-contain"
                     />
 
                 </div>
