@@ -9,7 +9,7 @@ const SaaSHero = () => {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-saas-accent/10 blur-[120px] rounded-full pointer-events-none"></div>
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-saas-accent/5 blur-[100px] rounded-full pointer-events-none"></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}

@@ -13,7 +13,7 @@ const Footer = () => {
   const navigate = useNavigate();
   return (
     <footer className="py-20 bg-white border-t border-slate-100">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           <div className="col-span-2 lg:col-span-1 space-y-6">
             <div onClick={() => navigate("/")} className="flex items-center gap-2 cursor-pointer">
@@ -39,17 +39,17 @@ const Footer = () => {
               <li onClick={() => navigate("/features/academic-management")} className="hover:text-blue-600 transition-colors cursor-pointer">Academic Management</li>
               <li onClick={() => navigate("/features/administration")} className="hover:text-blue-600 transition-colors cursor-pointer">Administration</li>
               <li onClick={() => navigate("/features/parent-student-portal")} className="hover:text-blue-600 transition-colors cursor-pointer">Parent Student Portal</li>
-              <li className="hover:text-blue-600 transition-colors cursor-pointer">Exam Management</li>
+              <li onClick={() => navigate("/features/hostel-management")} className="hover:text-blue-600 transition-colors cursor-pointer">Hostel Management</li>
             </ul>
           </div>
 
           <div className="space-y-6">
             <h5 className="font-black text-slate-900 uppercase tracking-widest text-xs">Support</h5>
             <ul className="space-y-4 text-slate-500 font-bold">
-              <li className="hover:text-blue-600 transition-colors cursor-pointer">Help Center</li>
-              <li className="hover:text-blue-600 transition-colors cursor-pointer">Documentation</li>
-              <li className="hover:text-blue-600 transition-colors cursor-pointer">Status Page</li>
-              <li className="hover:text-blue-600 transition-colors cursor-pointer">Training</li>
+              <li onClick={() => navigate("/School-help-desk")} className="hover:text-blue-600 transition-colors cursor-pointer">School Help Desk</li>
+              <li onClick={() => navigate("/Parent-student-guide-page")} className="hover:text-blue-600 transition-colors cursor-pointer">Parent and Student Guide</li>
+              <li onClick={() => navigate("/System-status-page")} className="hover:text-blue-600 transition-colors cursor-pointer">System Status</li>
+              <li onClick={() => navigate("/Teacher-training-page")} className="hover:text-blue-600 transition-colors cursor-pointer">Teacher Training</li>
             </ul>
           </div>
 

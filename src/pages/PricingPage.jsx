@@ -59,7 +59,7 @@ export default function PricingPage() {
             </div>
 
             {/* Pricing Cards */}
-            <div className="grid md:grid-cols-3 gap-10 min-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full max-w-screen-2xl mx-auto">
 
                 {plans.map((plan, index) => (
                     <div

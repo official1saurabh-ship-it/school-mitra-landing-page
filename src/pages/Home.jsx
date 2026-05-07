@@ -32,6 +32,7 @@ import {
   Zap
 } from "lucide-react";
 import { motion } from "framer-motion";
+import HeroSection from "../components/HeroSection";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -249,15 +250,7 @@ const Home = () => {
       <div className="absolute top-0 left-[-10%] w-[500px] h-[500px] bg-purple-200/20 blur-[120px] rounded-full -z-0" />
       <div className="absolute bottom-[20%] right-[-10%] w-[600px] h-[600px] bg-pink-200/20 blur-[150px] rounded-full -z-0" />
 
-      <main className="w-full pt-8 relative z-10">
-        <img
-          src={school}
-          alt="Cloud Illustration"
-          className="w-full h-auto block"
-        />
-      </main>
-
-
+      <HeroSection />
 
       {/* Why Choose Us Section */}
       <section className="w-full px-4 sm:px-8 lg:px-12 py-12 lg:py-24 text-slate-900 flex flex-col lg:flex-row items-stretch gap-8 lg:gap-12 relative z-10">
@@ -415,14 +408,14 @@ const Home = () => {
       </section>
 
       {/* Solution Capabilities Section */}
-      <section className="py-24 relative z-10 ">
-        <div className="min-w-7xl mx-auto px-6">
-          <div className="text-center space-y-4 mb-20">
+      <section className="py-12 md:py-24 relative z-10 ">
+        <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6">
+          <div className="text-center space-y-4 mb-12 md:mb-20">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-widest"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 text-[10px] sm:text-xs font-bold uppercase tracking-widest"
             >
               <Zap className="w-4 h-4 fill-blue-600" />
               <span>Engineered for Academic Excellence</span>
@@ -431,30 +424,30 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-black text-slate-900 leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 leading-tight"
             >
-              What Our Solutions <br />
-              <span className="text-blue-600">Can Do For Your School</span>
+              What Our Solutions <br className="hidden sm:block" />
+              <span className="text-blue-600 text-2xl sm:text-3xl md:text-5xl">Can Do For Your School</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-slate-500 font-medium max-w-2xl mx-auto text-lg"
+              className="text-slate-500 font-medium max-w-2xl mx-auto text-base md:text-lg"
             >
               Streamline your administrative workflow and focus on education with tools built specifically for modern institutions.
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[
-              { icon: Zap, title: "Faster Admissions", desc: "Process student applications and enrollments without delays.", accent: "bg-blue-600" },
+              { icon: Zap, title: "Faster Admissions", desc: "Process student applications and enrollments without delays.", accent: "bg-indigo-600" },
               { icon: BarChart3, title: "Real-Time Tracking", desc: "Monitor attendance, fee payments, and results instantly.", accent: "bg-indigo-600" },
-              { icon: ClipboardList, title: "Error-Free Reports", desc: "Automatic calculations ensure accurate result sheets.", accent: "bg-cyan-600" },
-              { icon: Users, title: "Staff Coordination", desc: "Sync data between teachers, administration, and parents.", accent: "bg-teal-600" },
-              { icon: CreditCard, title: "Online Payments", desc: "Accept fees via UPI, card, and net banking securely.", accent: "bg-green-600" },
-              { icon: TrendingUp, title: "Institutional Growth", desc: "Improve efficiency and attract more students.", accent: "bg-blue-800" }
+              { icon: ClipboardList, title: "Error-Free Reports", desc: "Automatic calculations ensure accurate result sheets.", accent: "bg-indigo-600" },
+              { icon: Users, title: "Staff Coordination", desc: "Sync data between teachers, administration, and parents.", accent: "bg-indigo-600" },
+              { icon: CreditCard, title: "Online Payments", desc: "Accept fees via UPI, card, and net banking securely.", accent: "bg-indigo-600" },
+              { icon: TrendingUp, title: "Institutional Growth", desc: "Improve efficiency and attract more students.", accent: "bg-indigo-800" }
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -463,19 +456,17 @@ const Home = () => {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{
                   duration: 1.5,
-                  delay: i * 0.3,
+                  delay: i * 0.2,
                   ease: "easeOut"
                 }}
-                className="group p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-slate-200/50 transition-all duration-500 relative overflow-hidden"
+                className="group p-8 md:p-10 rounded-3xl md:rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-slate-200/50 transition-all duration-500 relative overflow-hidden"
               >
                 <div className={`absolute top-0 left-0 w-full h-1.5 ${item.accent} transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500`} />
-                <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-slate-900 transition-all duration-500">
-                  <item.icon className={`w-8 h-8 text-slate-600 group-hover:text-white transition-colors duration-500`} />
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-slate-50 flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 group-hover:bg-slate-900 transition-all duration-500">
+                  <item.icon className={`w-7 h-7 md:w-8 md:h-8 text-slate-600 group-hover:text-white transition-colors duration-500`} />
                 </div>
-                <h3 className="text-2xl font-black text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">{item.title}</h3>
-                <p className="text-slate-500 leading-relaxed font-medium">{item.desc}</p>
-
-
+                <h3 className="text-xl md:text-2xl font-black text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">{item.title}</h3>
+                <p className="text-slate-500 text-sm md:text-base leading-relaxed font-medium">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -483,8 +474,8 @@ const Home = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-24 px-6">
-        <div className="max-w-7xl mx-auto bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+      <section className="py-24 px-4 sm:px-6">
+        <div className="w-full max-w-screen-2xl mx-auto bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
           <div className="lg:w-5/12 p-12 lg:p-16 bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex flex-col justify-between">
             <div>
               <motion.h2

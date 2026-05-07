@@ -76,7 +76,7 @@ const TechnicalGuide = () => {
     <div className="min-h-screen bg-gray-50">
       
       <main className="pt-24 pb-20 px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="w-full max-w-screen-xl mx-auto">
           {/* Breadcrumb / Back */}
           <button 
             onClick={() => navigate(-1)}

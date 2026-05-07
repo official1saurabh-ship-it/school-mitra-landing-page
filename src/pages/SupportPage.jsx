@@ -36,7 +36,7 @@ export default function SupportPage() {
             </div>
 
             {/* 🔹 Support Options */}
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-screen-2xl mx-auto mb-20">
 
                 <div className="bg-white p-6 rounded-2xl border border-slate-700 text-center hover:scale-105 transition">
                     <h3 className="text-xl font-bold mb-2 ">📧 Email Support</h3>
@@ -61,7 +61,7 @@ export default function SupportPage() {
             </div>
 
             {/* 🔹 Contact Form */}
-            <div className="max-w-6xl mx-auto bg-white p-10 rounded-3xl border border-slate-700 mb-20">
+            <div className="w-full max-w-screen-2xl mx-auto bg-white p-10 rounded-3xl border border-slate-700 mb-20">
                 <h2 className="text-2xl font-bold mb-6">Send us a message</h2>
 
                 <form className="grid md:grid-cols-2 gap-6">

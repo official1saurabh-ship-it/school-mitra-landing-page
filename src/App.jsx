@@ -26,6 +26,10 @@ import ContactPage from './pages/ContactPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import SettingsPage from './features/SettingsPage';
+import SchoolHelpDeskPage from './pages/SchoolHelpDeskPage';
+import ParentStudentGuidePage from './pages/ParentStudentGuidePage';
+import SystemStatusPage from './pages/SystemStatusPage';
+import TeacherTrainingPage from './pages/TeacherTrainingPage';
 
 function App() {
   return (
@@ -51,6 +55,13 @@ function App() {
         <Route path="/features/other-facilities" element={<OtherFacilities />} />
         <Route path="/features/reports-analytics" element={<ReportsAnalytics />} />
         <Route path="/features/technical-system-features" element={<TechnicalSystemFeatures />} />
+        <Route path="/School-help-desk" element={<SchoolHelpDeskPage />} />
+        <Route path="/Parent-student-guide-page" element={<ParentStudentGuidePage />} />
+        <Route path="/System-status-page" element={<SystemStatusPage />} />
+        <Route path="/Teacher-training-page" element={<TeacherTrainingPage />} />
+
+
+
 
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/support" element={<SupportPage />} />

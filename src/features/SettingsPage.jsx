@@ -86,7 +86,7 @@ const SettingsPage = () => {
             <section className="relative h-[40vh] min-h-[600px] flex items-center bg-slate-950 overflow-hidden">
                 <Scene3D type="reports" />
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-slate-950/20 via-transparent to-slate-950 z-10" />
-                <div className="max-w-7xl mx-auto px-6 relative z-20">
+                <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 relative z-20">
                     <button onClick={() => navigate(-1)} className="mb-8 flex items-center gap-2 text-slate-400 hover:text-blue-500 transition-colors group">
                         <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
                         <span className="font-bold text-sm uppercase tracking-widest">Back</span>
@@ -96,25 +96,25 @@ const SettingsPage = () => {
                             System  <span className="text-blue-600">Settings</span>
                         </h1>
                         <p className="text-xl text-slate-400 font-medium leading-relaxed">
-                            Data-driven decisions start here. Turn complex school data into actionable insights with our powerful reporting engine.
+                            Configure your institution's preferences, manage security, and customize your School Mitra experience.
                         </p>
                     </div>
                 </div>
             </section>
 
-            <div className='w-full flex justify-center '>
-                <div className="min-w-[600px]   bg-white text-black  p-4 space-y-3">
-                    <h1 className="text-3xl font-black mb-8">Settings</h1>
+            <div className='w-full flex justify-center py-20 px-4 sm:px-6 lg:px-8'>
+                <div className="w-full max-w-screen-xl bg-white text-black space-y-3">
+                    <h1 className="text-3xl md:text-5xl font-black mb-12">Settings</h1>
                     {settingsConfig.map((section) => (
-                        <div key={section.key} className="rounded-xl overflow-hidden">
+                        <div key={section.key} className="rounded-2xl overflow-hidden border border-slate-100 shadow-sm mb-4">
                             {/* Header */}
                             <div
                                 onClick={() => toggle(section.key)}
-                                className={`flex justify-between items-center p-4 cursor-pointer rounded-xl transition-colors
-                ${active === section.key ? "bg-[#d509b3] border border-blue-500/30" : "hover:bg-[blue-400] border border-transparent"}`}
+                                className={`flex justify-between items-center p-6 cursor-pointer transition-all duration-300
+                ${active === section.key ? "bg-blue-600 text-white" : "hover:bg-slate-50 text-slate-900"}`}
                             >
-                                <span className="font-bold">{section.title}</span>
-                                <span className={`transition-transform duration-300 ${active === section.key ? "rotate-180" : ""}`}>⌄</span>
+                                <span className="text-lg font-bold uppercase tracking-wider">{section.title}</span>
+                                <span className={`text-2xl transition-transform duration-300 ${active === section.key ? "rotate-180" : ""}`}>⌄</span>
                             </div>
 
                             {/* Animated Dropdown */}
@@ -127,13 +127,14 @@ const SettingsPage = () => {
                                         transition={{ duration: 0.3 }}
                                         className="overflow-hidden"
                                     >
-                                        <ul className="pl-6 py-4 space-y-3 text-gray-400">
+                                        <ul className="px-8 py-6 space-y-4 bg-slate-50/50">
                                             {section.children.map((item) => (
                                                 <li
                                                     key={item.path}
-                                                    className="hover:text-blue-400 cursor-pointer transition-colors font-medium flex items-center gap-2"
+                                                    onClick={() => navigate(item.path)}
+                                                    className="text-slate-600 hover:text-blue-600 cursor-pointer transition-all font-bold flex items-center gap-3 group"
                                                 >
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500/50" />
+                                                    <span className="w-2 h-2 rounded-full bg-slate-300 group-hover:bg-blue-600 transition-colors" />
                                                     {item.name}
                                                 </li>
                                             ))}

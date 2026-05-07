@@ -5,9 +5,9 @@ import { Shield, Target, Users, Zap } from 'lucide-react';
 const AboutUs = () => {
   return (
     <div className="min-h-screen bg-white pt-32 pb-20">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6">
         {/* Header Section */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="space-y-6 text-center mb-20"
@@ -75,7 +75,7 @@ const AboutUs = () => {
             <h2 className="text-3xl font-black text-slate-900">Join our growing family</h2>
             <p className="text-slate-500 font-medium">Have questions about our journey? We'd love to hear from you.</p>
             <button className="bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/20">
-              Get in Touch
+              <a href='https://www.biosoftech.com/'>Get in Touch</a>
             </button>
           </div>
         </section>

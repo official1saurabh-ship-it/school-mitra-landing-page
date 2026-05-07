@@ -22,7 +22,7 @@ const OtherFacilities = () => {
       <section className="relative h-[40vh] min-h-[600px] flex items-center bg-slate-950 overflow-hidden">
         <Scene3D type="other" />
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-slate-950/20 via-transparent to-slate-950 z-10" />
-        <div className="max-w-7xl mx-auto px-6 relative z-20">
+        <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 relative z-20">
           <button onClick={() => navigate(-1)} className="mb-8 flex items-center gap-2 text-slate-400 hover:text-blue-500 transition-colors group">
             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
             <span className="font-bold text-sm uppercase tracking-widest">Back</span>
@@ -39,7 +39,7 @@ const OtherFacilities = () => {
       </section>
 
       {/* Features Grid */}
-      <section className="py-24 max-w-7xl mx-auto px-6">
+      <section className="py-24 w-full max-w-screen-2xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((f, i) => (
             <motion.div

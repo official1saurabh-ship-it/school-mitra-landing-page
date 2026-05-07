@@ -1,7 +1,7 @@
 export default function TermsOfServicePage() {
     return (
         <div className="bg-gray-50 min-h-screen py-10 px-4 pt-20">
-            <div className="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-md">
+            <div className="w-full max-w-screen-xl mx-auto bg-white p-8 rounded-2xl shadow-md">
 
                 <h1 className="text-3xl font-bold text-gray-800 mb-4">
                     Terms of Service
