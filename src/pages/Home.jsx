@@ -281,7 +281,7 @@ const Home = () => {
       </section>
 
       {/* What Do We Do Section - Listing Layout */}
-      <section className="relative z-20 bg-white overflow-hidden py-24">
+      <section className="relative bg-white overflow-hidden py-24">
         <div className="w-full max-w-7xl mx-auto px-6">
 
           <div className="text-center space-y-4 mb-20 relative z-30">
@@ -289,7 +289,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-black text-white"
+              className="text-4xl md:text-6xl font-black text-slate-900"
             >
               What Do <span className="text-blue-600">We Do</span>
             </motion.h2>
@@ -298,7 +298,7 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-slate-400 font-medium max-w-2xl mx-auto text-lg"
+              className="text-slate-600 font-medium max-w-2xl mx-auto text-lg"
             >
               Explore our ecosystem — empowering Schools through integrated solutions.
             </motion.p>
@@ -315,17 +315,17 @@ const Home = () => {
               >
                 <Link
                   to={item.path}
-                  className="group relative flex flex-col h-full p-8 rounded-[2rem] bg-slate-900 border border-slate-800 shadow-xl transition-all duration-300 hover:border-blue-500/50 hover:shadow-blue-500/10"
+                  className="group relative flex flex-col h-full p-8 rounded-[2rem] bg-white border border-slate-100 shadow-xl shadow-slate-200/50 transition-all duration-300 hover:border-blue-500/50 hover:shadow-blue-500/10"
                 >
                   <div className={`w-16 h-16 rounded-2xl ${item.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 mb-6`}>
                     <item.icon className="w-8 h-8 text-white" />
                   </div>
 
                   <div className="space-y-4">
-                    <h3 className="text-2xl font-black text-white group-hover:text-blue-500 transition-colors duration-200">
+                    <h3 className="text-2xl font-black text-slate-900 group-hover:text-blue-500 transition-colors duration-200">
                       {item.title}
                     </h3>
-                    <p className="text-slate-400 text-base leading-relaxed font-medium">
+                    <p className="text-slate-500 text-base leading-relaxed font-medium">
                       {item.desc}
                     </p>
                     <div className="inline-flex items-center gap-2 text-blue-500 font-bold tracking-widest text-xs pt-4 uppercase group-hover:gap-3 transition-all duration-300">
@@ -342,8 +342,7 @@ const Home = () => {
         </div>
 
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/5 rounded-full blur-[120px]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#020617_100%)] opacity-60" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-50 rounded-full blur-[120px]" />
         </div>
       </section>
 
