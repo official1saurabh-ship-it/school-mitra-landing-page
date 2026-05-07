@@ -281,7 +281,7 @@ const Home = () => {
       </section>
 
       {/* What Do We Do Section - Listing Layout */}
-      <section className="relative z-20 bg-slate-950 overflow-hidden py-24">
+      <section className="relative z-20 bg-white overflow-hidden py-24">
         <div className="w-full max-w-7xl mx-auto px-6">
 
           <div className="text-center space-y-4 mb-20 relative z-30">
