@@ -315,7 +315,7 @@ const Home = () => {
               >
                 <Link
                   to={item.path}
-                  className="group relative flex flex-col h-full p-8 rounded-[2rem] bg-white border border-slate-100 shadow-xl shadow-slate-200/50 transition-all duration-300 hover:border-blue-500/50 hover:shadow-blue-500/10"
+                  className="group relative flex flex-col h-full p-8 rounded-[2rem] bg-white border-2 border-slate-100 shadow-lg shadow-slate-200/50 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300"
                 >
                   <div className={`w-16 h-16 rounded-2xl ${item.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 mb-6`}>
                     <item.icon className="w-8 h-8 text-white" />
@@ -325,15 +325,13 @@ const Home = () => {
                     <h3 className="text-2xl font-black text-slate-900 group-hover:text-blue-500 transition-colors duration-200">
                       {item.title}
                     </h3>
-                    <p className="text-slate-500 text-base leading-relaxed font-medium">
+                    <p className="text-slate-600 text-base leading-relaxed font-medium">
                       {item.desc}
                     </p>
-                    <div className="inline-flex items-center gap-2 text-blue-500 font-bold tracking-widest text-xs pt-4 uppercase group-hover:gap-3 transition-all duration-300">
+                    <div className="inline-flex items-center gap-2 text-blue-600 font-bold tracking-widest text-xs pt-4 uppercase group-hover:gap-3 transition-all duration-300">
                       Explore Module <TrendingUp className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </div>
                   </div>
-
-                  <div className={`absolute -inset-4 ${item.color} opacity-0 group-hover:opacity-5 blur-3xl transition-opacity duration-300`} />
                 </Link>
               </motion.div>
             ))}
@@ -341,9 +339,6 @@ const Home = () => {
 
         </div>
 
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-50 rounded-full blur-[120px]" />
-        </div>
       </section>
 
       {/* Solution Capabilities Section */}
