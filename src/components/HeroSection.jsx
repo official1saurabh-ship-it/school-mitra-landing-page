@@ -57,7 +57,7 @@ export default function HeroSection() {
                     </h1>
 
                     {/* Description */}
-                    <p className="mt-4 text-gray-600 max-w-md">
+                    <p className="mt-4 text-gray-800 font-bold max-w-md">
                         A complete digital solution to manage your school operations
                         smoothly and efficiently.
                     </p>
@@ -90,12 +90,12 @@ export default function HeroSection() {
                 </div>
 
                 {/* RIGHT IMAGE */}
-                <div className="absolute lg:relative inset-0 lg:inset-auto flex justify-center items-center lg:items-stretch opacity-20 lg:opacity-100 z-0 lg:z-auto pointer-events-none lg:pointer-events-auto">
+                <div className="absolute lg:relative inset-0 lg:inset-auto flex justify-center items-center lg:items-stretch opacity-80 lg:opacity-100 z-0 lg:z-auto pointer-events-none lg:pointer-events-auto">
 
                     <img
                         src={Laptopbag} // replace with your image path
                         alt="Dashboard"
-                        className="w-full max-w-[500px] lg:max-w-full object-contain"
+                        className="w-full max-w-[650px] lg:max-w-full object-contain"
                     />
 
                 </div>
