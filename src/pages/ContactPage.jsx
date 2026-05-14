@@ -36,19 +36,24 @@ export default function ContactPage() {
                 <ContactCard
                     icon={Mail}
                     title="Email"
-                    text="connect@biosoftech.in"
+                    text="info@biosoftech.in"
                     color="bg-blue-500"
                 />
                 <ContactCard
                     icon={Phone}
                     title="Phone"
-                    text="+91 62096 88930"
+                    text={
+                        <>
+                            +91 62096 88930 <br />
+                            +91 9044425858
+                        </>
+                    }
                     color="bg-indigo-500"
                 />
                 <ContactCard
                     icon={MapPin}
                     title="Office"
-                    text="Lucknow, Uttar Pradesh"
+                    text="3rd Floor, Office No- 624F/20A, Kotwali Rd, Matiyari, Chinhat, Lucknow, Uttar Pradesh 226028"
                     color="bg-green-500"
                 />
                 <ContactCard

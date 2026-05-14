@@ -36,26 +36,19 @@ export default function SupportPage() {
             </div>
 
             {/* 🔹 Support Options */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-screen-2xl mx-auto mb-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-screen-2xl mx-auto mb-20">
 
                 <div className="bg-white p-6 rounded-2xl border border-slate-700 text-center hover:scale-105 transition">
                     <h3 className="text-xl font-bold mb-2 ">📧 Email Support</h3>
                     <p className="text-slate-400 mb-4">Reach us anytime via email</p>
-                    <p className="font-semibold">support@schoolapp.com</p>
-                </div>
-
-                <div className="bg-white p-6 rounded-2xl border border-slate-700 text-center hover:scale-105 transition">
-                    <h3 className="text-xl font-bold mb-2">💬 Live Chat</h3>
-                    <p className="text-slate-400 mb-4">Chat with our support team</p>
-                    <button className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-500">
-                        Start Chat
-                    </button>
+                    <p className="font-semibold">info@biosoftech.com</p>
                 </div>
 
                 <div className="bg-white p-6 rounded-2xl border border-slate-700 text-center hover:scale-105 transition">
                     <h3 className="text-xl font-bold mb-2">📞 Call Us</h3>
-                    <p className="text-slate-400 mb-4">Mon–Fri, 9AM–6PM</p>
-                    <p className="font-semibold">+91 98765 43210</p>
+                    <p className="text-slate-400 mb-4">Available 24/7</p>
+                    <p className="font-semibold">+91-9044425858</p>
+                    <p className="font-semibold">+91-6209688930</p>
                 </div>
 
             </div>

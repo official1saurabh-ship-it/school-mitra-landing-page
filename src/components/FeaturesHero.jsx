@@ -23,9 +23,11 @@ const FeaturesHero = () => {
             Everything you need to manage and grow your school. From student records to staff management, we've got you covered with a modern, high-performance toolkit.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-saas-accent hover:brightness-110 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-xl shadow-saas-accent/20 transition-all active:scale-95">
-              Get Started
-            </button>
+            <a href="https://school.biosoftech.in/register">
+              <button className="bg-saas-accent hover:brightness-110 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-xl shadow-saas-accent/20 transition-all active:scale-95">
+                Get Started
+              </button>
+            </a>
             <button className="bg-white/5 hover:bg-white/10 text-white border border-saas-border px-8 py-4 rounded-2xl font-bold text-lg transition-all active:scale-95 backdrop-blur-sm">
               Watch Demo
             </button>

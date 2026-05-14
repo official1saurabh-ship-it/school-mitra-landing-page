@@ -1,4 +1,4 @@
-import { Search, Mail, Phone, MessageCircle } from "lucide-react";
+import { Mail, Phone, MessageCircle } from "lucide-react";
 
 export default function SchoolHelpDeskPage() {
     return (
@@ -12,16 +12,6 @@ export default function SchoolHelpDeskPage() {
                 <p className="text-gray-500 mt-2">
                     Find answers, guides, and support for your school management system
                 </p>
-
-                {/* Search */}
-                <div className="mt-6 relative">
-                    <input
-                        type="text"
-                        placeholder="Search help articles..."
-                        className="w-full px-5 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    />
-                    <Search className="absolute right-4 top-3.5 text-gray-400 w-5 h-5" />
-                </div>
             </div>
 
             {/* QUICK HELP */}
@@ -79,11 +69,14 @@ export default function SchoolHelpDeskPage() {
                     <div className="space-y-4">
                         <div className="flex items-center gap-3">
                             <Mail className="text-blue-500" />
-                            <span>support@schoolmitra.com</span>
+                            <span>info@biosoftech.com</span>
                         </div>
                         <div className="flex items-center gap-3">
                             <Phone className="text-green-500" />
-                            <span>+91 98765 43210</span>
+                            <div className="flex flex-col">
+                                <span>+91-9044425858</span>
+                                <span>+91-6209688930</span>
+                            </div>
                         </div>
 
                     </div>

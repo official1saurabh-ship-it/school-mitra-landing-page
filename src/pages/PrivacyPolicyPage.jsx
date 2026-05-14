@@ -2,24 +2,24 @@ import React from "react";
 
 const PrivacyPolicyPage = () => {
     return (
-        <div className="bg-slate-900 text-white min-h-screen px-4 sm:px-8 md:px-16 pt-32 pb-20">
+        <div className="bg-white text-black min-h-screen px-4 sm:px-8 md:px-16 pt-32 pb-20">
 
             <div className="w-full max-w-screen-xl mx-auto">
 
                 {/* Heading */}
-                <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-center">
+                <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-center text-black">
                     Privacy Policy
                 </h1>
 
-                <p className="text-sm text-gray-400 mb-8 text-center">
+                <p className="text-sm text-slate-500 mb-8 text-center">
                     Last Updated: {new Date().toLocaleDateString()}
                 </p>
 
                 {/* Section */}
-                <section className="space-y-6 text-gray-300 leading-relaxed">
+                <section className="space-y-6 text-slate-800 leading-relaxed">
 
                     <div>
-                        <h2 className="text-xl font-semibold text-white mb-2">
+                        <h2 className="text-xl font-semibold text-black mb-2">
                             1. Introduction
                         </h2>
                         <p>
@@ -30,7 +30,7 @@ const PrivacyPolicyPage = () => {
                     </div>
 
                     <div>
-                        <h2 className="text-xl font-semibold text-white mb-2">
+                        <h2 className="text-xl font-semibold text-black mb-2">
                             2. Information We Collect
                         </h2>
                         <ul className="list-disc pl-6 space-y-1">
@@ -42,7 +42,7 @@ const PrivacyPolicyPage = () => {
                     </div>
 
                     <div>
-                        <h2 className="text-xl font-semibold text-white mb-2">
+                        <h2 className="text-xl font-semibold text-black mb-2">
                             3. How We Use Your Information
                         </h2>
                         <ul className="list-disc pl-6 space-y-1">
@@ -54,7 +54,7 @@ const PrivacyPolicyPage = () => {
                     </div>
 
                     <div>
-                        <h2 className="text-xl font-semibold text-white mb-2">
+                        <h2 className="text-xl font-semibold text-black mb-2">
                             4. Data Sharing
                         </h2>
                         <p>
@@ -64,7 +64,7 @@ const PrivacyPolicyPage = () => {
                     </div>
 
                     <div>
-                        <h2 className="text-xl font-semibold text-white mb-2">
+                        <h2 className="text-xl font-semibold text-black mb-2">
                             5. Data Security
                         </h2>
                         <p>
@@ -74,7 +74,7 @@ const PrivacyPolicyPage = () => {
                     </div>
 
                     <div>
-                        <h2 className="text-xl font-semibold text-white mb-2">
+                        <h2 className="text-xl font-semibold text-black mb-2">
                             6. Cookies
                         </h2>
                         <p>
@@ -83,7 +83,7 @@ const PrivacyPolicyPage = () => {
                     </div>
 
                     <div>
-                        <h2 className="text-xl font-semibold text-white mb-2">
+                        <h2 className="text-xl font-semibold text-black mb-2">
                             7. Your Rights
                         </h2>
                         <p>
@@ -93,13 +93,13 @@ const PrivacyPolicyPage = () => {
                     </div>
 
                     <div>
-                        <h2 className="text-xl font-semibold text-white mb-2">
+                        <h2 className="text-xl font-semibold text-black mb-2">
                             8. Contact Us
                         </h2>
                         <p>
                             If you have any questions about this Privacy Policy, you can contact us at:
                             <br />
-                            <span className="text-blue-400">support@biosoftech.com</span>
+                            <span className="text-blue-600 font-bold">info@biosoftech.com</span>
                         </p>
                     </div>
 

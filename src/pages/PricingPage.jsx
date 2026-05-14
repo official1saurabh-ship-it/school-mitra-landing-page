@@ -98,15 +98,17 @@ export default function PricingPage() {
                         </ul>
 
                         {/* Button */}
-                        <button
-                            className={`w-full py-3 rounded-xl font-bold transition-all
+                        <a href="https://school.biosoftech.in/register">
+                            <button
+                                className={`w-full py-3 rounded-xl font-bold transition-all
                 ${plan.highlighted
-                                    ? "bg-white text-black hover:bg-gray-200"
-                                    : "bg-blue-600 hover:bg-blue-500"
-                                }`}
-                        >
-                            Get Started
-                        </button>
+                                        ? "bg-white text-black hover:bg-gray-200"
+                                        : "bg-blue-600 hover:bg-blue-500"
+                                    }`}
+                            >
+                                Get Started
+                            </button>
+                        </a>
                     </div>
                 ))}
             </div>

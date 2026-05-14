@@ -70,9 +70,11 @@ const Communication = () => {
         <div className="max-w-5xl mx-auto bg-slate-950 rounded-[3rem] p-12 lg:p-20 text-center relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-blue-600/10 blur-[120px]" />
           <h2 className="text-4xl md:text-6xl font-black text-white mb-8 relative z-10">Connect Your School Community</h2>
-          <button className="px-10 py-5 bg-blue-600 hover:bg-blue-500 text-white font-black rounded-2xl shadow-2xl transition-all hover:scale-105 relative z-10">
-            Book a Demo
-          </button>
+          <a href="https://school.biosoftech.in/register">
+            <button className="px-10 py-5 bg-blue-600 hover:bg-blue-500 text-white font-black rounded-2xl shadow-2xl transition-all hover:scale-105 relative z-10">
+              Book a Demo
+            </button>
+          </a>
         </div>
       </section>
     </div>
