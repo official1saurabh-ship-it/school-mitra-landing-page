@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import school from "../assets/school.png";
 import schoolimage from "../assets/schoolimage.png";
@@ -40,6 +40,21 @@ gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
   const imageRef = useRef(null);
   const sectionRef = useRef(null);
+  const [formData, setFormData] = useState({
+    fullName: '',
+    schoolName: '',
+    phone: '',
+    email: '',
+    message: ''
+  });
+
+  const handleWhatsAppRedirect = (e) => {
+    e.preventDefault();
+    const { fullName, schoolName, phone, email, message } = formData;
+    const whatsappNumber = "919044425858";
+    const text = `I filled in your form and would like to know more about your business.%0A%0AFull Name: ${fullName}%0ASchool Name: ${schoolName}%0APhone: ${phone}%0AEmail: ${email}%0ARequirements: ${message}`;
+    window.location.href = `https://wa.me/${whatsappNumber}?text=${text}`;
+  };
 
   const featureItems = [
     {
@@ -444,20 +459,68 @@ const Home = () => {
           </div>
 
           <div className="lg:w-7/12 p-12 lg:p-16">
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={handleWhatsAppRedirect}>
               <div className="space-y-2">
                 <label className="text-sm font-bold text-slate-400 uppercase tracking-wider">Full Name</label>
-                <input type="text" placeholder="Amit Sharma" className="w-full bg-slate-800 border border-slate-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition-all font-medium" />
+                <input
+                  type="text"
+                  placeholder="Amit Sharma"
+                  required
+                  value={formData.fullName}
+                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                  className="w-full bg-slate-800 border border-slate-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition-all font-medium"
+                />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-bold text-slate-400 uppercase tracking-wider">School Name</label>
-                <input type="text" placeholder="Modern Public School" className="w-full bg-slate-800 border border-slate-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition-all font-medium" />
+                <input
+                  type="text"
+                  placeholder="Modern Public School"
+                  required
+                  value={formData.schoolName}
+                  onChange={(e) => setFormData({ ...formData, schoolName: e.target.value })}
+                  className="w-full bg-slate-800 border border-slate-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition-all font-medium"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-slate-400 uppercase tracking-wider">Phone Number</label>
+                <input
+                  type="tel"
+                  placeholder="+91 98765 43210"
+                  required
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full bg-slate-800 border border-slate-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition-all font-medium"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-slate-400 uppercase tracking-wider">Email Address</label>
+                <input
+                  type="email"
+                  placeholder="amit@school.com"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full bg-slate-800 border border-slate-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition-all font-medium"
+                />
               </div>
               <div className="space-y-2 md:col-span-2">
-                <textarea rows="4" placeholder="Tell us about your requirements..." className="w-full bg-slate-800 border border-slate-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition-all font-medium resize-none"></textarea>
+                <textarea
+                  rows="4"
+                  placeholder="Tell us about your requirements..."
+                  required
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="w-full bg-slate-800 border border-slate-700 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition-all font-medium resize-none"
+                ></textarea>
               </div>
               <div className="md:col-span-2 pt-4">
-                <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl shadow-xl transition-all text-lg">
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl shadow-xl transition-all text-lg"
+                >
                   Send Message
                 </motion.button>
               </div>

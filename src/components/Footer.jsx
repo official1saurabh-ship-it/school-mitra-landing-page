@@ -17,10 +17,8 @@ const Footer = () => {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           <div className="col-span-2 lg:col-span-1 space-y-6">
             <div onClick={() => navigate("/")} className="flex items-center gap-2 cursor-pointer">
-              <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-600/20">
-                <TableIcon className="text-white w-6 h-6" />
-              </div>
-              <img src={SKOLAPORTRAITE} alt="" className="w-40 h-25" />
+
+              <img src={SKOLAPORTRAITE} alt="" className="w-50 h-20" />
             </div>
             <p className="text-slate-500 font-medium leading-relaxed">
               Empowering educational institutions with smart management solutions for a better tomorrow.

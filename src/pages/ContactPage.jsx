@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 const ContactCard = ({ icon: Icon, title, text, color }) => {
@@ -15,6 +16,23 @@ const ContactCard = ({ icon: Icon, title, text, color }) => {
 };
 
 export default function ContactPage() {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        phone: '',
+        email: '',
+        service: 'Select Service',
+        message: ''
+    });
+
+    const handleWhatsAppRedirect = (e) => {
+        e.preventDefault();
+        const { firstName, lastName, phone, email, service, message } = formData;
+        const whatsappNumber = "919044425858";
+        const text = `I filled in your Contact form and would like to know more about your business.%0A%0AFull Name: ${firstName} ${lastName}%0APhone: ${phone}%0AEmail: ${email}%0AService: ${service}%0AMessage: ${message}`;
+        window.location.href = `https://wa.me/${whatsappNumber}?text=${text}`;
+    };
+
     return (
         <div className="bg-gray-50 min-h-screen py-12 md:py-20 px-4 sm:px-6 lg:px-12">
 
@@ -85,17 +103,31 @@ export default function ContactPage() {
 
                 {/* Form */}
                 <div className="bg-white/80 backdrop-blur-md p-6 md:p-10 rounded-3xl shadow-xl border border-gray-100">
-                    <form className="space-y-6">
+                    <form className="space-y-6" onSubmit={handleWhatsAppRedirect}>
 
                         {/* Row 1 */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label className="text-sm font-medium text-gray-700 mb-1.5 block">First Name</label>
-                                <input type="text" placeholder="Enter your first name" className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent bg-gray-50/50" />
+                                <input
+                                    type="text"
+                                    placeholder="Enter your first name"
+                                    required
+                                    value={formData.firstName}
+                                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent bg-gray-50/50"
+                                />
                             </div>
                             <div>
                                 <label className="text-sm font-medium text-gray-700 mb-1.5 block">Last Name</label>
-                                <input type="text" placeholder="Enter your last name" className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent bg-gray-50/50" />
+                                <input
+                                    type="text"
+                                    placeholder="Enter your last name"
+                                    required
+                                    value={formData.lastName}
+                                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent bg-gray-50/50"
+                                />
                             </div>
                         </div>
 
@@ -103,12 +135,26 @@ export default function ContactPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label className="text-sm font-medium text-gray-700 mb-1.5 block ">Phone</label>
-                                <input type="tel" placeholder="Enter your phone number" className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent bg-gray-50/50" />
+                                <input
+                                    type="tel"
+                                    placeholder="Enter your phone number"
+                                    required
+                                    value={formData.phone}
+                                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent bg-gray-50/50"
+                                />
                             </div>
 
                             <div>
                                 <label className="text-sm font-medium text-gray-700 mb-1.5 block">Email</label>
-                                <input type="Email" placeholder="Enter your email" className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent bg-gray-50/50" />
+                                <input
+                                    type="Email"
+                                    placeholder="Enter your email"
+                                    required
+                                    value={formData.email}
+                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent bg-gray-50/50"
+                                />
                             </div>
                         </div>
 
@@ -116,7 +162,11 @@ export default function ContactPage() {
                         <div>
                             <label className="text-sm font-medium text-gray-700 mb-1.5 block">Service Interested In</label>
                             <div className="relative">
-                                <select className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent appearance-none">
+                                <select
+                                    value={formData.service}
+                                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent appearance-none"
+                                >
                                     <option>Select Service</option>
                                     <option>Web Development</option>
                                     <option>App Development</option>
@@ -138,6 +188,9 @@ export default function ContactPage() {
                             <textarea
                                 rows="4"
                                 placeholder="Write your message here..."
+                                required
+                                value={formData.message}
+                                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                 className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-800 
                                 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent resize-none transition-all"
                             ></textarea>

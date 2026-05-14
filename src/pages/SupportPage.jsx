@@ -21,6 +21,20 @@ const faqs = [
 
 export default function SupportPage() {
     const [openIndex, setOpenIndex] = useState(null);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+    });
+
+    const handleWhatsAppRedirect = (e) => {
+        e.preventDefault();
+        const { name, email, phone, message } = formData;
+        const whatsappNumber = "919044425858";
+        const text = `I filled in your Support form and would like to know more about your business.%0A%0AFull Name: ${name}%0APhone: ${phone}%0AEmail: ${email}%0AIssue/Requirements: ${message}`;
+        window.location.href = `https://wa.me/${whatsappNumber}?text=${text}`;
+    };
 
     return (
         <div className="min-h-screen bg-white text-black px-6 py-16 mt-20">
@@ -57,27 +71,46 @@ export default function SupportPage() {
             <div className="w-full max-w-screen-2xl mx-auto bg-white p-10 rounded-3xl border border-slate-700 mb-20">
                 <h2 className="text-2xl font-bold mb-6">Send us a message</h2>
 
-                <form className="grid md:grid-cols-2 gap-6">
+                <form className="grid md:grid-cols-2 gap-6" onSubmit={handleWhatsAppRedirect}>
 
                     <input
                         type="text"
                         placeholder="Your Name"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className="bg-white p-4 rounded-xl border border-slate-600 focus:outline-none"
                     />
 
                     <input
                         type="email"
                         placeholder="Your Email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="bg-white p-4 rounded-xl border border-slate-600 focus:outline-none"
+                    />
+
+                    <input
+                        type="tel"
+                        placeholder="Your Phone Number"
+                        required
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="bg-white p-4 rounded-xl border border-slate-600 focus:outline-none"
                     />
 
                     <textarea
                         placeholder="Describe your issue..."
                         rows="5"
+                        required
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         className="md:col-span-2 bg-white p-4 rounded-xl border border-slate-600 focus:outline-none"
                     />
 
                     <button
+                        type="submit"
                         className="md:col-span-2 bg-blue-600 py-3 rounded-xl font-bold hover:bg-blue-500 transition"
                     >
                         Submit Request
