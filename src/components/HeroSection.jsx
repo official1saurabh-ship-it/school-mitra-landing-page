@@ -90,7 +90,7 @@ export default function HeroSection() {
                 </div>
 
                 {/* RIGHT IMAGE */}
-                <div className="absolute lg:relative inset-0 lg:inset-auto flex justify-center items-center lg:items-stretch opacity-80 lg:opacity-100 z-0 lg:z-auto pointer-events-none lg:pointer-events-auto">
+                <div className="relative flex justify-center items-center lg:items-stretch opacity-100 z-auto pointer-events-auto mt-10 lg:mt-0">
 
                     <img
                         src={Laptopbag} // replace with your image path
