@@ -1,5 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import emailjs from '@emailjs/browser';
+
+// EMAILJS CONFIGURATION
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID_ORG = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_ORG;
+const EMAILJS_TEMPLATE_ID_USER = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_USER;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const SITE_NAME = "School Mitra";
+
+// Initialize EmailJS
+if (EMAILJS_PUBLIC_KEY) {
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+}
 
 const ContactCard = ({ icon: Icon, title, text, color }) => {
     return (
@@ -16,21 +29,90 @@ const ContactCard = ({ icon: Icon, title, text, color }) => {
 };
 
 export default function ContactPage() {
+    const formRef = useRef();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [status, setStatus] = useState({ type: '', message: '' });
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
+        fullName: '',
+        schoolName: '',
         phone: '',
         email: '',
-        service: 'Select Service',
         message: ''
     });
 
-    const handleWhatsAppRedirect = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const { firstName, lastName, phone, email, service, message } = formData;
-        const whatsappNumber = "919044425858";
-        const text = `I filled in your Contact form and would like to know more about your business.%0A%0AFull Name: ${firstName} ${lastName}%0APhone: ${phone}%0AEmail: ${email}%0AService: ${service}%0AMessage: ${message}`;
-        window.location.href = `https://wa.me/${whatsappNumber}?text=${text}`;
+        setIsSubmitting(true);
+        setStatus({ type: '', message: '' });
+
+        const now = new Date().toLocaleString('en-IN', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+        });
+
+        // Parameters for Admin Notification
+        const ownerParams = {
+            to_email: "info@biosoftech.in",
+            owner_name: formData.fullName,
+            school_name: formData.schoolName,
+            user_email: formData.email,
+            phone: formData.phone,
+            message: formData.message,
+            date_time: now,
+            site_name: SITE_NAME,
+        };
+
+        // Parameters for User Confirmation
+        const userParams = {
+            owner_name: formData.fullName,
+            user_email: formData.email,
+            site_name: SITE_NAME,
+            company_name: "Biosoftech Solutions",
+            support_email: "info@biosoftech.in",
+            to_email: formData.email
+        };
+
+        try {
+            // 1. Send Email to Admin
+            if (EMAILJS_TEMPLATE_ID_ORG) {
+                await emailjs.send(
+                    EMAILJS_SERVICE_ID,
+                    EMAILJS_TEMPLATE_ID_ORG,
+                    ownerParams,
+                    EMAILJS_PUBLIC_KEY
+                );
+            }
+
+            // 2. Send Confirmation Email to User
+            if (EMAILJS_TEMPLATE_ID_USER) {
+                await emailjs.send(
+                    EMAILJS_SERVICE_ID,
+                    EMAILJS_TEMPLATE_ID_USER,
+                    userParams,
+                    EMAILJS_PUBLIC_KEY
+                );
+            }
+
+            setStatus({
+                type: 'success',
+                message: 'Thank you! Your message has been sent successfully.'
+            });
+            setFormData({ fullName: '', schoolName: '', phone: '', email: '', message: '' });
+
+            setTimeout(() => setStatus({ type: '', message: '' }), 5000);
+        } catch (error) {
+            console.error('EmailJS Error:', error);
+            setStatus({
+                type: 'error',
+                message: 'Something went wrong. Please try again later.'
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -103,29 +185,29 @@ export default function ContactPage() {
 
                 {/* Form */}
                 <div className="bg-white/80 backdrop-blur-md p-6 md:p-10 rounded-3xl shadow-xl border border-gray-100">
-                    <form className="space-y-6" onSubmit={handleWhatsAppRedirect}>
+                    <form ref={formRef} className="space-y-6" onSubmit={handleSubmit}>
 
                         {/* Row 1 */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label className="text-sm font-medium text-gray-700 mb-1.5 block">First Name</label>
+                                <label className="text-sm font-medium text-gray-700 mb-1.5 block">Full Name</label>
                                 <input
                                     type="text"
-                                    placeholder="Enter your first name"
+                                    placeholder="Enter your full name"
                                     required
-                                    value={formData.firstName}
-                                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                                    value={formData.fullName}
+                                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                                     className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent bg-gray-50/50"
                                 />
                             </div>
                             <div>
-                                <label className="text-sm font-medium text-gray-700 mb-1.5 block">Last Name</label>
+                                <label className="text-sm font-medium text-gray-700 mb-1.5 block">School Name</label>
                                 <input
                                     type="text"
-                                    placeholder="Enter your last name"
+                                    placeholder="Enter your school name"
                                     required
-                                    value={formData.lastName}
-                                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                                    value={formData.schoolName}
+                                    onChange={(e) => setFormData({ ...formData, schoolName: e.target.value })}
                                     className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent bg-gray-50/50"
                                 />
                             </div>
@@ -158,28 +240,6 @@ export default function ContactPage() {
                             </div>
                         </div>
 
-                        {/* Dropdown */}
-                        <div>
-                            <label className="text-sm font-medium text-gray-700 mb-1.5 block">Service Interested In</label>
-                            <div className="relative">
-                                <select
-                                    value={formData.service}
-                                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent appearance-none"
-                                >
-                                    <option>Select Service</option>
-                                    <option>Web Development</option>
-                                    <option>App Development</option>
-                                    <option>Consulting</option>
-                                </select>
-                                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-
                         {/* Message */}
                         <div>
                             <label className="text-sm font-medium text-gray-700 mb-1.5 block">
@@ -199,10 +259,17 @@ export default function ContactPage() {
                         {/* Button */}
                         <button
                             type="submit"
-                            className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-blue-600 to-cyan-500 shadow-lg shadow-blue-200 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 uppercase tracking-wider text-sm"
+                            disabled={isSubmitting}
+                            className={`w-full py-4 rounded-xl font-bold text-white transition-all duration-200 uppercase tracking-wider text-sm shadow-lg ${isSubmitting ? 'bg-gray-400 cursor-not-allowed' : 'bg-gradient-to-r from-blue-600 to-cyan-500 shadow-blue-200 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]'}`}
                         >
-                            Send Message →
+                            {isSubmitting ? 'Sending...' : 'Send Message →'}
                         </button>
+
+                        {status.message && (
+                            <p className={`text-center text-sm font-medium ${status.type === 'success' ? 'text-green-600' : 'text-red-600'}`}>
+                                {status.message}
+                            </p>
+                        )}
                     </form>
                 </div>
             </div>
